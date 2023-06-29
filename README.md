@@ -1,1 +1,6 @@
-# MiniProject_Basic_ParkSangdo
+# 중고상품 판매 시스템
+
+### 요구사항
+
+---
+
