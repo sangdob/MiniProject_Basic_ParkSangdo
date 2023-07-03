@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block th:fragment="nav">
+    <nav style="display:block">
+        <div class="px-3 py-2 border-bottom">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-decoration-none">
+                        <img src="/image/icons/bootstrap.svg" alt="BootStrap" width="40" height="32">
+                    </a>
+
+                    <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                        <li>
+                            <a href="/" class="nav-link text-black">
+                                <img class="bi d-block mx-auto mb-1" src="/image/icons/house.svg" alt="home" width="24" height="24">
+                                home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/items" class="nav-link text-black">
+                                <img class="bi d-block mx-auto mb-1" src="/image/icons/table.svg" alt="item" width="24" height="24">
+                                items
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</th:block>
+</html>

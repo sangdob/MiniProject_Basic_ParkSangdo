@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block th:replace="~{common/head :: head}"></th:block>
+<body>
+    <th:block th:replace="~{/common/nav :: nav}"></th:block>
+    <div class="container">
+        <th:block layout:fragment="contents"></th:block>
+    </div>
+    <th:block th:replace="~{/common/footer :: footer}"></th:block>
+</body>
+</html>
