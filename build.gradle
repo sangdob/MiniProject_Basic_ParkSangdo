@@ -34,6 +34,14 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
+	// bootstrap
+	implementation group: 'org.webjars', name: 'bootstrap', version: '5.1.3'
+
+	// JQuery
+	implementation group: 'org.webjars', name: 'jquery', version: '3.6.0'
+
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
