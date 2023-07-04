@@ -21,13 +21,13 @@ public class PageResponse<T> {
     private boolean empty;
 
     public PageResponse(Page<T> page) {
-            this.content = page.getContent();
-            this.totalPages = page.getTotalPages();
-            this.totalElements = page.getTotalElements();
-            this.last = page.isLast();
-            this.size = page.getSize();
-            this.number = page.getNumber() + 1;
-            this.numberOfElements = page.getNumberOfElements();
+        this.content = page.getContent();
+        this.totalPages = page.getTotalPages();
+        this.totalElements = page.getTotalElements();
+        this.last = page.isLast();
+        this.size = page.getSize();
+        this.number = page.getNumber() + 1;
+        this.numberOfElements = page.getNumberOfElements();
         this.first = page.isFirst();
         this.empty = page.isEmpty();
     }
