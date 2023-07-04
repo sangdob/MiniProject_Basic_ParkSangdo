@@ -4,6 +4,7 @@ import com.mutsa.mini_project.exceptions.ErrorCode;
 import com.mutsa.mini_project.exceptions.ExceptionResponse;
 import com.mutsa.mini_project.exceptions.exception.BusinessException;
 import com.mutsa.mini_project.exceptions.exception.CustomIoException;
+import com.mutsa.mini_project.exceptions.exception.NotMatchException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -69,6 +70,14 @@ public class GlobalExceptionHandler{
         log.error("handleBindException", e);
         final ExceptionResponse response = ExceptionResponse.of(ErrorCode.INVALID_INPUT_VALUE, e.getBindingResult());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NotMatchException.class)
+    protected ResponseEntity<ExceptionResponse> handleMatchException(final NotMatchException e) {
+        log.error(e.getClass().getName(), e);
+        final ErrorCode errorCode = e.getErrorCode();
+        final ExceptionResponse response = ExceptionResponse.of(errorCode);
+        return new ResponseEntity<>(response, errorCode.getCode());
     }
 
     @ExceptionHandler(BusinessException.class)

@@ -23,6 +23,7 @@ public enum SuccessCode {
     SUCCESS_DELETED_COMMENT(HttpStatus.OK, "댓글을 삭제했습니다."),
 
     SUCCESS_CREATED_REPLY(HttpStatus.OK, "댓글에 답변이 추가되었습니다."),
+    SUCCESS_MODIFIED_REPLY(HttpStatus.OK, "댓글에 답변이 수정되었습니다."),
 
     SUCCESS_CREATED_PROPOSAL(HttpStatus.OK, "구매 제안이 등록되었습니다."),
     SUCCESS_MODIFIED_PROPOSAL(HttpStatus.OK, "제안이 수정되었습니다."),
