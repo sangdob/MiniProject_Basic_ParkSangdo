@@ -2,11 +2,13 @@ package com.mutsa.mini_project.service.item;
 
 import com.mutsa.mini_project.dto.item.*;
 import com.mutsa.mini_project.exceptions.ErrorCode;
+import com.mutsa.mini_project.exceptions.exception.BusinessException;
 import com.mutsa.mini_project.exceptions.exception.NoEntityException;
 import com.mutsa.mini_project.models.SalesItem;
 import com.mutsa.mini_project.models.embedded.RequiredWriter;
 import com.mutsa.mini_project.repository.item.ItemRepository;
 import com.mutsa.mini_project.upload.ItemImageManager;
+import com.mutsa.mini_project.utils.PageUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +30,15 @@ public class ItemService {
     }
 
     public Page<ItemRes> findAll(Pageable pageable) {
+        if (PageUtils.isOutOfRange(pageable)) {
+            throw new BusinessException(ErrorCode.INVALID_INPUT_VALUE);
+        }
         return itemRepository.findItemResAll(pageable);
+    }
+
+    @Transactional
+    public SalesItem save(SalesItem salesItem) {
+        return itemRepository.save(salesItem);
     }
 
     @Transactional
@@ -42,14 +52,18 @@ public class ItemService {
         itemRepository.saveAll(items);
     }
 
-    public ItemDetailRes findById(Long itemId) {
+    public SalesItem findById(Long id) {
+        return itemRepository.findById(id).orElseThrow(() -> new NoEntityException(ErrorCode.NOT_FOUND_ENTITY));
+    }
+
+    public ItemDetailRes findDetailItemById(Long itemId) {
         return itemRepository.findDetailItemById(itemId)
                 .orElseThrow(() -> new NoEntityException(ErrorCode.NOT_FOUND_ENTITY));
     }
 
     @Transactional
     public void modified(Long id, ItemEditForm editForm) {
-        SalesItem item = itemRepository.findSalesItemByIdEqualsAndRequiredWriter(id,
+        SalesItem item = itemRepository.findSalesItemByIdEqualsAndRequiredWriterEquals(id,
                         RequiredWriter.of(editForm.getWriter(), editForm.getPassword()))
                 .orElseThrow(() -> new NoEntityException(ErrorCode.NOT_FOUND_ENTITY));
 
@@ -58,7 +72,7 @@ public class ItemService {
 
     @Transactional
     public void modifiedImage(Long id, ItemImageForm imageForm , MultipartFile file){
-        SalesItem item = itemRepository.findSalesItemByIdEqualsAndRequiredWriter(id,
+        SalesItem item = itemRepository.findSalesItemByIdEqualsAndRequiredWriterEquals(id,
                         RequiredWriter.of(imageForm.getWriter(),
                         imageForm.getPassword()))
                 .orElseThrow(() -> new NoEntityException(ErrorCode.NOT_FOUND_ENTITY));
@@ -69,12 +83,11 @@ public class ItemService {
 
         String imagePath = imageManager.upload(file);
         item.updateImage(imagePath);
-//        itemRepository.save(item);
     }
 
     @Transactional
     public void delete(Long id, ItemDeleteForm req) {
-        SalesItem item = itemRepository.findSalesItemByIdEqualsAndRequiredWriter(id,
+        SalesItem item = itemRepository.findSalesItemByIdEqualsAndRequiredWriterEquals(id,
                         RequiredWriter.of(req.getWriter(), req.getPassword()))
                 .orElseThrow(() -> new NoEntityException(ErrorCode.NOT_FOUND_ENTITY));
 

@@ -21,10 +21,10 @@ public interface ItemRepository extends JpaRepository<SalesItem, Long>, ItemRepo
 
     @Query("select " +
             "new com.mutsa.mini_project.dto.item.ItemDetailRes(s.title, s.description, s.minPriceWanted, s.imageUrl, s.status) " +
-            "from SalesItem as s " +
+            "from SalesItem s " +
             "where s.id = :itemId")
     Optional<ItemDetailRes> findDetailItemById(@Param("itemId") Long itemId);
 
-    Optional<SalesItem> findSalesItemByIdEqualsAndRequiredWriter(Long itemId, RequiredWriter requiredWriter);
+    Optional<SalesItem> findSalesItemByIdEqualsAndRequiredWriterEquals(Long itemId, RequiredWriter requiredWriter);
 
 }
