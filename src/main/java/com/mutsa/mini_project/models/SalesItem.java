@@ -44,17 +44,21 @@ public class SalesItem extends BaseTimeEntity {
     @Embedded
     private RequiredWriter requiredWriter;
 
-    @OneToMany(fetch = FetchType.LAZY,
-            mappedBy = "salesItem"
+    @OneToMany(mappedBy = "salesItem"
     )
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY,
-            mappedBy = "salesItem"
+    @OneToMany(mappedBy = "salesItem"
     )
     private List<Negotiation> negotiations = new ArrayList<>();
 
     /* business logic */
+    public SalesItem addComment(Comment comment) {
+        comment.addItem(this);
+        this.comments.add(comment);
+        return this;
+    }
+
     public SalesItem updateItem(ItemEditForm editForm) {
         this.title = editForm.getTitle();
         this.description = editForm.getDescription();

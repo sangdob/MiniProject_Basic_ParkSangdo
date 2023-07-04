@@ -65,7 +65,7 @@ spring:
         max-page-size: 1000
         one-indexed-parameters: false
         page-parameter: page
-        size-parameter: size
+        size-parameter: limit
 
   web:
     resources:
@@ -74,8 +74,8 @@ spring:
 
 # log level
 logging.level:
-  org.hibernate.SQL: debug
-  org.hibernate.orm.jdbc.bind: debug
-  org.hibernate.stat: debug
+#  org.hibernate.SQL: debug
+#  org.hibernate.orm.jdbc.bind: debug
+#  org.hibernate.stat: debug
   org.hibernate.type: info
   org.hibernate.type.descriptor.sql: trace

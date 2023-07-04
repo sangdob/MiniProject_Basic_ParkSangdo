@@ -39,7 +39,7 @@ public class ItemController {
 
     @GetMapping("/{itemId}")
     public ResponseEntity<ItemDetailRes> detailItem(@PathVariable(name = "itemId") Long itemId) {
-        ItemDetailRes item = itemService.findById(itemId);
+        ItemDetailRes item = itemService.findDetailItemById(itemId);
 
         return ResponseEntity.status(OK).body(item);
     }
