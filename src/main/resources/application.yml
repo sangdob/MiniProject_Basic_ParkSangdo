@@ -77,5 +77,6 @@ logging.level:
 #  org.hibernate.SQL: debug
 #  org.hibernate.orm.jdbc.bind: debug
 #  org.hibernate.stat: debug
+  org.hibernate.SQL: info
   org.hibernate.type: info
-  org.hibernate.type.descriptor.sql: trace
+  org.hibernate.type.descriptor.sql: debug
