@@ -22,6 +22,7 @@ public class CommentCreatReq {
         return Comment.builder()
                 .content(req.getContent())
                 .requiredWriter(RequiredWriter.of(req.getWriter(), req.getPassword()))
+                .reply("")
                 .build();
     }
 }

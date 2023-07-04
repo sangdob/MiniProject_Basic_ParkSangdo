@@ -7,13 +7,12 @@ import com.mutsa.mini_project.models.embedded.RequiredWriter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    Optional<CommentRes> findCommentByIdAndSalesItemEquals(Long commentId, SalesItem item);
+    Optional<Comment> findCommentByIdAndSalesItemEquals(Long commentId, SalesItem item);
+    Optional<CommentRes> findCommentResByIdAndSalesItemEquals(Long commentId, SalesItem item);
 
 //    @Query(value = "select c " +
 //            "from Comment c " +

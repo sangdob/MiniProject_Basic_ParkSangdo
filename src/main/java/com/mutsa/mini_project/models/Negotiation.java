@@ -19,9 +19,6 @@ public class Negotiation extends BaseTimeEntity {
 
     private String suggestedPrice;
 
-    @Enumerated(EnumType.STRING)
-    private ItemStatus status;
-
     @Embedded
     private RequiredWriter requiredWriter;
 

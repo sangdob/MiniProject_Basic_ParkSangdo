@@ -38,14 +38,14 @@ public class ItemController {
     }
 
     @GetMapping("/{itemId}")
-    public ResponseEntity<ItemDetailRes> detailItem(@PathVariable(name = "itemId") Long itemId) {
+    public ResponseEntity<ItemDetailRes> findDetail(@PathVariable(name = "itemId") Long itemId) {
         ItemDetailRes item = itemService.findDetailItemById(itemId);
 
         return ResponseEntity.status(OK).body(item);
     }
 
     @PostMapping
-    public ResponseEntity<Response> createItem(@RequestBody(required = false) ItemCreateReq itemCreateReq) {
+    public ResponseEntity<Response> created(@RequestBody(required = false) ItemCreateReq itemCreateReq) {
         itemService.save(itemCreateReq);
 
         Response response = Response.of(SuccessCode.SUCCESS_CREATED_ITEM);
@@ -72,7 +72,7 @@ public class ItemController {
 
     @DeleteMapping("{itemId}")
     public ResponseEntity<Response> deleted(@PathVariable Long itemId,
-                                             @RequestBody @Valid ItemDeleteForm deleteReq) {
+                                            @RequestBody @Valid ItemDeleteForm deleteReq) {
         itemService.delete(itemId, deleteReq);
         Response response = Response.of(SuccessCode.SUCCESS_DELETED_ITEM);
         return new ResponseEntity<>(response, response.getStatus());

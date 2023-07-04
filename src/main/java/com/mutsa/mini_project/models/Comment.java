@@ -4,6 +4,7 @@ import com.mutsa.mini_project.models.embedded.RequiredWriter;
 import com.mutsa.mini_project.repository.base.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.util.StringUtils;
 
 @Entity
 @Getter
@@ -15,8 +16,6 @@ public class Comment extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
     private Long id;
-
-    private String status;
 
     @Embedded
     private RequiredWriter requiredWriter;
@@ -31,8 +30,15 @@ public class Comment extends BaseTimeEntity {
     )
     private SalesItem salesItem;
 
+    /* business logic */
     public Comment addItem(SalesItem item) {
         this.salesItem = item;
         return this;
+    }
+
+    public void modifyReply(String reply) {
+        if (StringUtils.hasText(reply)) {
+            this.reply = reply;
+        }
     }
 }

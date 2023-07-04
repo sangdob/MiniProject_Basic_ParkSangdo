@@ -2,14 +2,12 @@ package com.mutsa.mini_project.dto.comment;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.mutsa.mini_project.models.Comment;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CommentRes {
     private Long id;
     private String content;

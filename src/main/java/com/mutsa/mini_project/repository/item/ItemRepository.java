@@ -27,4 +27,5 @@ public interface ItemRepository extends JpaRepository<SalesItem, Long>, ItemRepo
 
     Optional<SalesItem> findSalesItemByIdEqualsAndRequiredWriterEquals(Long itemId, RequiredWriter requiredWriter);
 
+
 }

@@ -5,6 +5,7 @@ import com.mutsa.mini_project.contorller.Response;
 import com.mutsa.mini_project.contorller.SuccessCode;
 import com.mutsa.mini_project.dto.comment.CommentCreatReq;
 import com.mutsa.mini_project.dto.comment.CommentEditForm;
+import com.mutsa.mini_project.dto.comment.CommentReplyForm;
 import com.mutsa.mini_project.dto.comment.CommentRes;
 import com.mutsa.mini_project.models.embedded.RequiredWriter;
 import com.mutsa.mini_project.service.comment.CommentService;
@@ -14,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,15 +32,17 @@ public class CommentController {
                                                               @PageableDefault(page = 1,
                                                                       size = 25,
                                                                       sort = "id",
-                                                                      direction = Sort.Direction.DESC) Pageable pageable) {
+                                                                      direction = Sort.Direction.DESC) Pageable pageable
+    ) {
         Page<CommentRes> pages = commentService.findPages(itemId, pageable);
 
         return ResponseEntity.status(OK).body(new PageResponse<>(pages));
     }
 
     @PostMapping
-    public ResponseEntity<Response> createdComment(@PathVariable Long itemId,
-                                                   @RequestBody CommentCreatReq req) {
+    public ResponseEntity<Response> created(@PathVariable Long itemId,
+                                            @RequestBody CommentCreatReq req
+    ) {
         commentService.save(itemId, req);
 
         Response response = Response.of(SuccessCode.SUCCESS_CREATED_COMMENT);
@@ -58,7 +60,6 @@ public class CommentController {
     public ResponseEntity<Response> pageLists(@PathVariable(name = "itemId") Long itemId,
                                               @PathVariable(name = "commentId") Long commentId,
                                               @RequestBody CommentEditForm commentEdit
-
     ) {
         commentService.modifiedComment(itemId, commentId, commentEdit);
 
@@ -66,15 +67,25 @@ public class CommentController {
         return new ResponseEntity<>(response, response.getStatus());
     }
 
-    @DeleteMapping("{commentId}")
-    public ResponseEntity<Response> deleteComment(@PathVariable(name = "itemId") Long itemId,
-                                              @PathVariable(name = "commentId") Long commentId,
-                                              @RequestBody RequiredWriter requiredWriter
-
+    @DeleteMapping("/{commentId}")
+    public ResponseEntity<Response> deleted(@PathVariable(name = "itemId") Long itemId,
+                                            @PathVariable(name = "commentId") Long commentId,
+                                            @RequestBody RequiredWriter requiredWriter
     ) {
         commentService.deletedComment(itemId, commentId, requiredWriter);
 
-        Response response = Response.of(SuccessCode.SUCCESS_MODIFIED_COMMENT);
+        Response response = Response.of(SuccessCode.SUCCESS_DELETED_COMMENT);
+        return new ResponseEntity<>(response, response.getStatus());
+    }
+
+    @PutMapping("/{commentId}/reply")
+    public ResponseEntity<Response> modifiedReply(@PathVariable(name = "itemId") Long itemId,
+                                                  @PathVariable(name = "commentId") Long commentId,
+                                                  @RequestBody CommentReplyForm form
+    ) {
+        commentService.modifiedReply(itemId, commentId, form);
+
+        Response response = Response.of(SuccessCode.SUCCESS_MODIFIED_REPLY);
         return new ResponseEntity<>(response, response.getStatus());
     }
 }
