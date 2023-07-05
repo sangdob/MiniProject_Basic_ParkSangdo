@@ -1,0 +1,1660 @@
+{
+	"info": {
+		"_postman_id": "d26c2c9a-e1e6-4d83-a93d-7fc7945b051d",
+		"name": "Items",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19999550"
+	},
+	"item": [
+		{
+			"name": "items",
+			"item": [
+				{
+					"name": "POST /items",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"중고 맥북 팝니다\",\r\n    \"description\": \"2019년 맥북 프로 13인치 모델입니다\",\r\n    \"minPriceWanted\": 1000000,\r\n    \"writer\": \"jeeho.dev\",\r\n    \"password\": \"1qaz2wsx\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/items",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"중고 맥북 팝니다\",\r\n    \"description\": \"2019년 맥북 프로 13인치 모델입니다\",\r\n    \"minPriceWanted\": 1000000,\r\n    \"writer\": \"jeeho.dev\",\r\n    \"password\": \"1qaz2wsx\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:21:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"등록이 완료되었습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "GET /items?page={page}&limit={limit}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/items?page=1&limit=25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "25"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/items?page={page}&limit={limit}",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/items?page=1&limit=25",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "25"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 09:14:25 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": [\n        {\n            \"id\": 1,\n            \"title\": \"중고 맥북 팝니다\",\n            \"description\": \"2019년 맥북 프로 13인치 모델입니다\",\n            \"minPriceWanted\": 1000000,\n            \"status\": \"SALE\"\n        }\n    ],\n    \"totalPages\": 1,\n    \"totalElements\": 1,\n    \"last\": true,\n    \"size\": 25,\n    \"number\": 1,\n    \"numberOfElements\": 1,\n    \"first\": true,\n    \"empty\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "GET /items/{itemId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/items/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/items/{itemId}",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/items/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 08:05:12 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"title\": \"중고 맥북 팝니다\",\n    \"description\": \"2019년 맥북 프로 13인치 모델입니다\",\n    \"minPriceWanted\": 1000000,\n    \"status\": \"SALE\"\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT /items/{itemId}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"중고 맥북 팝니다\",\r\n    \"description\": \"2019년 맥북 프로 13인치 모델입니다\",\r\n    \"minPriceWanted\": 1250000,\r\n    \"writer\": \"jeeho.dev\",\r\n    \"password\": \"1qaz2wsx\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/items/{itemId}",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"중고 맥북 팝니다\",\r\n    \"description\": \"2019년 맥북 프로 13인치 모델입니다\",\r\n    \"minPriceWanted\": 1250000,\r\n    \"writer\": \"jeeho.dev\",\r\n    \"password\": \"1qaz2wsx\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:44:30 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"물품이 수정되었습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT /items/{itemId}/image",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/skql1/Pictures/MSI Wallpaper/MSI.png"
+								},
+								{
+									"key": "writer",
+									"value": "jeeho.dev",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1qaz2wsx",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1/image",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"image"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "PUT /items/{itemId}/image",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/skql1/Pictures/MSI Wallpaper/MSI.png"
+										},
+										{
+											"key": "writer",
+											"value": "jeeho.dev",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "1qaz2wsx",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1/image",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"image"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 09:25:52 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"이미지가 수정되었습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE /items/{itemId}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"writer\": \"jeeho.dev\",\r\n    \"password\": \"1qaz2wsx\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "DELETE /items/{itemId}",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"writer\": \"jeeho.dev\",\r\n    \"password\": \"1qaz2wsx\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:50:49 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"물품을 삭제했습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "/items/{itemId}/comments?page={page}&limit={limit}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/items/1/comments?page=1&limit=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/items/{itemId}/comments?page={page}&limit={limit}",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/items/1/comments?page=1&limit=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"comments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:47:51 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": [\n        {\n            \"id\": 2,\n            \"content\": \"할인 가능하신가요??\",\n            \"reply\": \"\"\n        }\n    ],\n    \"totalPages\": 1,\n    \"totalElements\": 1,\n    \"last\": true,\n    \"size\": 1,\n    \"number\": 1,\n    \"numberOfElements\": 1,\n    \"first\": true,\n    \"empty\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "POST /items/{itemId}/comments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\",\r\n    \"content\": \"할인 가능하신가요??\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"comments"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "POST /items/{itemId}/comments/{commentId}",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\",\r\n    \"content\": \"할인 가능하신가요??\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"comments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:45:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"댓글이 등록되었습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT /items/{itemId}/comments/{commentId}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\",\r\n    \"content\": \"할인 가능하신가요? 1000000 정도면 고려 가능합니다\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1/comments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "PUT /items/{itemId}/comments/{commentId}",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\",\r\n    \"content\": \"할인 가능하신가요? 1000000 정도면 고려 가능합니다\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1/comments/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"comments",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:47:09 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"댓글이 수정되었습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT /items/{itemId}/comments/{commentId}/reply",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"writer\": \"jeeho.dev\",\r\n    \"password\": \"1qaz2wsx\",\r\n    \"reply\": \"안됩니다\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1/comments/1/reply",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"comments",
+								"1",
+								"reply"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "PUT /items/{itemId}/comments/{commentId} Copy",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"writer\": \"jeeho.dev\",\r\n    \"password\": \"1qaz2wsx\",\r\n    \"reply\": \"안됩니다\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1/comments/1/reply",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"comments",
+										"1",
+										"reply"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 09:26:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"댓글에 답변이 수정되었습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE /items/{itemId}/comments/{commentId}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1/comments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "DELETE /items/{itemId}/comments/{commentId}",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1/comments/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"comments",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:47:32 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"댓글을 삭제했습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "proposal",
+			"item": [
+				{
+					"name": "POST /items/{itemId}/proposals",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\",\r\n    \"suggestedPrice\": 100000011\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1/proposals",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"proposals"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "POST /items/{itemId}/proposals",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\",\r\n    \"suggestedPrice\": 100000011\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1/proposals",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"proposals"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:48:08 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"구매 제안이 등록되었습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "GET /items/{itemId}/proposals?writer=jeeho.edu&password=qwerty1234&page=1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/items/1/proposals?writer=jeeho.edu&password=qwerty1234&page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"proposals"
+							],
+							"query": [
+								{
+									"key": "writer",
+									"value": "jeeho.edu"
+								},
+								{
+									"key": "password",
+									"value": "qwerty1234"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET /items/{itemId}/proposals?writer=jeeho.edu&password=qwerty1234&page=1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/items/1/proposals?writer=jeeho.edu&password=qwerty1234&page=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"proposals"
+									],
+									"query": [
+										{
+											"key": "writer",
+											"value": "jeeho.edu"
+										},
+										{
+											"key": "password",
+											"value": "qwerty1234"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:48:53 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": [\n        {\n            \"id\": 1,\n            \"suggestedPrice\": 100000011,\n            \"status\": \"제안\"\n        }\n    ],\n    \"totalPages\": 1,\n    \"totalElements\": 1,\n    \"last\": true,\n    \"size\": 25,\n    \"number\": 1,\n    \"numberOfElements\": 1,\n    \"first\": true,\n    \"empty\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT /items/{itemId}/proposals/{proposalId} 작성자 수정",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\",\r\n    \"suggestedPrice\": 110333\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1/proposals/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"proposals",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "PUT /items/{itemId}/proposals/{proposalId} 작성자 수정",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\",\r\n    \"suggestedPrice\": 110333\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1/proposals/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"proposals",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:49:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"제안이 수정되었습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT /items/{itemId}/proposals/{proposalId} 판매자 수정",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"writer\": \"jeeho.dev\",\r\n    \"password\": \"1qaz2wsx\",\r\n    \"status\": \"수락\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1/proposals/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"proposals",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "PUT /items/{itemId}/proposals/{proposalId} 판매자 수정",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"writer\": \"jeeho.dev\",\r\n    \"password\": \"1qaz2wsx\",\r\n    \"status\": \"수락\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1/proposals/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"proposals",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:49:32 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"제안의 상태가 변경되었습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT /items/{itemId}/proposals/{proposalId} 작성자 확정",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\",\r\n    \"status\": \"확정\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1/proposals/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"proposals",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "PUT /items/{itemId}/proposals/{proposalId} 작성자 확정",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\",\r\n    \"status\": \"확정\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1/proposals/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"proposals",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:22:37 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"구매가 확정되었습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE /items/{itemId}/proposals/{proposalId}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/items/1/proposals/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"items",
+								"1",
+								"proposals",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "DELETE /items/{itemId}/proposals/{proposalId}",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"writer\": \"jeeho.edu\",\r\n    \"password\": \"qwerty1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/items/1/proposals/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"items",
+										"1",
+										"proposals",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 12:50:14 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"제안을 삭제했습니다.\",\n    \"status\": \"OK\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

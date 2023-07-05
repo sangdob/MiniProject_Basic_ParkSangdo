@@ -15,7 +15,7 @@ public interface NegotiationRepository extends JpaRepository<Negotiation, Long> 
 
     Page<Negotiation> findNegotiationsBySalesItemEquals(SalesItem item, Pageable pageable);
 
-    Optional<Negotiation> findByIdAndSalesItemAndRequiredWriterEquals(Long proposalId, SalesItem item, RequiredWriter of);
+    Optional<Negotiation> findNegotiationByIdEqualsAndSalesItemEqualsAndRequiredWriterEquals(Long proposalId, SalesItem item, RequiredWriter of);
 
     Optional<Negotiation> findBySalesItemEqualsAndId(SalesItem item, Long proposalId);
 

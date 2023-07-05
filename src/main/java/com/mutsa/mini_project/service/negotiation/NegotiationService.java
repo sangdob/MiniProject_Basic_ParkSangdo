@@ -67,7 +67,9 @@ public class NegotiationService {
         if (hasPrice(form)) {
             SalesItem item = findItemById(itemId);
 
-            Negotiation negotiation = findByIdAndSalesItemAndRequiredWriterEquals(proposalId, RequiredWriter.of(form.getWriter(), form.getPassword()), item);
+            Negotiation negotiation = findNegotiationByIdEqualsAndSalesItemEqualsAndRequiredWriterEquals(proposalId,
+                    RequiredWriter.of(form.getWriter(), form.getPassword()),
+                    item);
             negotiation.modifyPrice(form.getSuggestedPrice());
 
             return SuccessCode.SUCCESS_MODIFIED_PROPOSAL;
@@ -115,15 +117,15 @@ public class NegotiationService {
     public ProposalRes deleted(Long itemId, Long proposalId, WriterInfo req) {
         SalesItem item = findItemById(itemId);
 
-        Negotiation findProposal = findByIdAndSalesItemAndRequiredWriterEquals(proposalId, RequiredWriter.of(req.getWriter(), req.getPassword()), item);
+        Negotiation findProposal = findNegotiationByIdEqualsAndSalesItemEqualsAndRequiredWriterEquals(proposalId, RequiredWriter.of(req.getWriter(), req.getPassword()), item);
 
         negotiationRepository.delete(findProposal);
 
         return ProposalRes.of(findProposal);
     }
 
-    private Negotiation findByIdAndSalesItemAndRequiredWriterEquals(Long proposalId, RequiredWriter rw, SalesItem item) {
-        return negotiationRepository.findByIdAndSalesItemAndRequiredWriterEquals(proposalId, item, rw)
+    private Negotiation findNegotiationByIdEqualsAndSalesItemEqualsAndRequiredWriterEquals(Long proposalId, RequiredWriter rw, SalesItem item) {
+        return negotiationRepository.findNegotiationByIdEqualsAndSalesItemEqualsAndRequiredWriterEquals(proposalId, item, rw)
                 .orElseThrow(() -> new NotMatchException(ErrorCode.NOT_MATCH_WRITER));
     }
 
