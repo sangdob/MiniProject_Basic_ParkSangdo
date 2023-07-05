@@ -27,5 +27,13 @@ public interface ItemRepository extends JpaRepository<SalesItem, Long>, ItemRepo
 
     Optional<SalesItem> findSalesItemByIdEqualsAndRequiredWriterEquals(Long itemId, RequiredWriter requiredWriter);
 
+    boolean existsSalesItemByIdAndRequiredWriterEquals(Long id, RequiredWriter requiredWriter);
 
+    @Query("select distinct(s) from SalesItem s " +
+            "left join s.comments " +
+            "left join s.negotiations " +
+            "where s.id = :itemId " +
+            "and s.requiredWriter.writer = :writer " +
+            "and s.requiredWriter.password = :password")
+    Optional<SalesItem> findItemById(@Param("itemId")Long itemId, @Param("writer")String writer, @Param("password") String password);
 }

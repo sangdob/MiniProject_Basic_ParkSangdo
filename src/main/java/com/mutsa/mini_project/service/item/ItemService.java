@@ -67,7 +67,7 @@ public class ItemService {
                         RequiredWriter.of(editForm.getWriter(), editForm.getPassword()))
                 .orElseThrow(() -> new NoEntityException(ErrorCode.NOT_FOUND_ENTITY));
 
-        item.updateItem(editForm);
+        item.modifyItem(editForm);
     }
 
     @Transactional
@@ -82,7 +82,7 @@ public class ItemService {
         }
 
         String imagePath = imageManager.upload(file);
-        item.updateImage(imagePath);
+        item.modifyImageUrl(imagePath);
     }
 
     @Transactional
@@ -91,6 +91,9 @@ public class ItemService {
                         RequiredWriter.of(req.getWriter(), req.getPassword()))
                 .orElseThrow(() -> new NoEntityException(ErrorCode.NOT_FOUND_ENTITY));
 
+        /*SalesItem item = itemRepository.findItemById(id, req.getWriter(), req.getPassword())
+                .orElseThrow(() -> new NoEntityException(ErrorCode.NOT_FOUND_ENTITY));*/
+        imageManager.delete(item.getImageUrl());
         itemRepository.delete(item);
     }
 }

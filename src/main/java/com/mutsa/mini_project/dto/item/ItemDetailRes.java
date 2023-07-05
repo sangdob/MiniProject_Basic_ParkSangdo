@@ -9,12 +9,19 @@ import lombok.Data;
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
 
 @Data
-@AllArgsConstructor
 @JsonInclude(NON_NULL)
 public class ItemDetailRes {
     private String title;
     private String description;
     private int minPriceWanted;
     private String imageUrl;
-    private ItemStatus status;
+    private String status;
+
+    public ItemDetailRes(String title, String description, int minPriceWanted, String imageUrl, ItemStatus status) {
+        this.title = title;
+        this.description = description;
+        this.minPriceWanted = minPriceWanted;
+        this.imageUrl = imageUrl;
+        this.status = status.getName();
+    }
 }

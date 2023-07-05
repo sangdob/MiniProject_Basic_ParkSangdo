@@ -11,7 +11,7 @@ import static com.fasterxml.jackson.annotation.JsonFormat.Shape.OBJECT;
 @AllArgsConstructor
 @Getter
 public enum SuccessCode {
-    SUCCESS_CREATED_ITEM(HttpStatus.OK, "상품이 등록헀습니다."),
+    SUCCESS_CREATED_ITEM(HttpStatus.OK, "등록이 완료되었습니다."),
     SUCCESS_MODIFIED_ITEM(HttpStatus.OK, "물품이 수정되었습니다."),
     SUCCESS_DELETED_ITEM(HttpStatus.OK, "물품을 삭제했습니다."),
 
@@ -31,7 +31,9 @@ public enum SuccessCode {
 
     SUCCESS_MODIFIED_SALLER(HttpStatus.OK, "제안의 상태가 변경되었습니다."),
     SUCCESS_COMPLETED_SALLER(HttpStatus.OK, "구매가 확정되었습니다."),
-    SUCCESS_FAILED_SALLER(HttpStatus.OK, "구매가 거절되었습니다.")
+    SUCCESS_FAILED_SALLER(HttpStatus.OK, "구매가 거절되었습니다."),
+
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버에서 에러가 발생했습니다.")
     ;
 
     private final HttpStatus status;

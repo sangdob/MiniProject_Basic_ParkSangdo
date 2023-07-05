@@ -5,6 +5,7 @@ import com.mutsa.mini_project.contorller.Response;
 import com.mutsa.mini_project.contorller.SuccessCode;
 import com.mutsa.mini_project.dto.item.*;
 import com.mutsa.mini_project.service.item.ItemService;
+import com.mutsa.mini_project.utils.PageUtils;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,10 +32,8 @@ public class ItemController {
             @PageableDefault(page = 1,
             size = 25,
             sort = "id",
-            direction = Sort.Direction.DESC) Pageable pageable) {
-        PageRequest pr = PageRequest.of(pageable.getPageNumber() - 1, pageable.getPageSize(), pageable.getSort());
-
-        return ResponseEntity.status(OK).body(new PageResponse<>(itemService.findAll(pr)));
+            direction = Sort.Direction.ASC) Pageable pageable) {
+        return ResponseEntity.status(OK).body(new PageResponse<>(itemService.findAll(PageUtils.of(pageable))));
     }
 
     @GetMapping("/{itemId}")
@@ -62,9 +61,9 @@ public class ItemController {
 
     @PutMapping("{itemId}/image")
     public ResponseEntity<Response> modifiedImage(@PathVariable Long itemId,
-                                                  @RequestPart MultipartFile file,
+                                                  @RequestPart MultipartFile image,
                                                   @ModelAttribute ItemImageForm imageForm) {
-        itemService.modifiedImage(itemId, imageForm, file);
+        itemService.modifiedImage(itemId, imageForm, image);
 
         Response response = Response.of(SuccessCode.SUCCESS_MODIFIED_IMAGE);
         return new ResponseEntity<>(response, response.getStatus());

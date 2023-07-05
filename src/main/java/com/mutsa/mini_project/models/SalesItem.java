@@ -8,8 +8,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,11 +42,13 @@ public class SalesItem extends BaseTimeEntity {
     @Embedded
     private RequiredWriter requiredWriter;
 
-    @OneToMany(mappedBy = "salesItem"
+    @OneToMany(mappedBy = "salesItem",
+            cascade = CascadeType.ALL
     )
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "salesItem"
+    @OneToMany(mappedBy = "salesItem",
+            cascade = CascadeType.ALL
     )
     private List<Negotiation> negotiations = new ArrayList<>();
 
@@ -59,15 +59,41 @@ public class SalesItem extends BaseTimeEntity {
         return this;
     }
 
-    public SalesItem updateItem(ItemEditForm editForm) {
+    public SalesItem addNegotiation(Negotiation negotiation) {
+        negotiation.addItem(this);
+        this.negotiations.add(negotiation);
+        return this;
+    }
+
+    public SalesItem modifyItem(ItemEditForm editForm) {
         this.title = editForm.getTitle();
         this.description = editForm.getDescription();
         this.minPriceWanted = editForm.getMinPriceWanted();
         return this;
     }
 
-    public SalesItem updateImage(String imageUrl) {
+    public SalesItem modifyImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
+    }
+
+    public SalesItem modifyStatus(ItemStatus status) {
+        this.status = status;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "SalesItem{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", minPriceWanted=" + minPriceWanted +
+                ", status=" + status +
+                ", requiredWriter=" + requiredWriter +
+                ", comments=" + comments +
+                ", negotiations=" + negotiations +
+                '}';
     }
 }

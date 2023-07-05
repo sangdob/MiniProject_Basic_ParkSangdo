@@ -5,10 +5,12 @@ import org.springframework.data.domain.Pageable;
 
 public class PageUtils {
     public static boolean isOutOfRange(Pageable pageable) {
-        return pageable.getPageNumber() < 1;
+        return pageable.getPageNumber() < 0;
     }
 
     public static PageRequest of(Pageable pageable) {
-        return PageRequest.of(pageable.getPageNumber() - 1, pageable.getPageSize(), pageable.getSort());
+        return pageable.getPageNumber() > 0
+                ? PageRequest.of(pageable.getPageNumber() - 1, pageable.getPageSize(), pageable.getSort())
+                : PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
     }
 }

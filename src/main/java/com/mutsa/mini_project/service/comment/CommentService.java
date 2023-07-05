@@ -59,6 +59,8 @@ public class CommentService {
                         item,
                         RequiredWriter.of(commentEdit.getWriter(), commentEdit.getPassword()))
                 .orElseThrow(() -> new NoEntityException(ErrorCode.NOT_MATCH_WRITER));
+
+        comment.modify(commentEdit.getContent());
     }
 
     @Transactional

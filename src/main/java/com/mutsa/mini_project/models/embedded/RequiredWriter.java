@@ -6,6 +6,7 @@ import lombok.*;
 @Embeddable
 @Getter
 @Setter
+@ToString
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor

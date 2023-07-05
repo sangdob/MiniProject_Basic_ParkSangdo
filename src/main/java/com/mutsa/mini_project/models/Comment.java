@@ -20,14 +20,14 @@ public class Comment extends BaseTimeEntity {
     @Embedded
     private RequiredWriter requiredWriter;
 
+    @Column(nullable = false)
     private String content;
 
+    @Column(nullable = false)
     private String reply;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "item_id",
-            foreignKey = @ForeignKey(name = "FK_COMMENT_ITEM")
-    )
+    @JoinColumn(name = "item_id")
     private SalesItem salesItem;
 
     /* business logic */
@@ -41,4 +41,22 @@ public class Comment extends BaseTimeEntity {
             this.reply = reply;
         }
     }
+
+    public void modify(String content) {
+        if (StringUtils.hasText(content)) {
+            this.content = content;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", requiredWriter=" + requiredWriter +
+                ", content='" + content + '\'' +
+                ", reply='" + reply + '\'' +
+                ", salesItem=" + salesItem.getId() +
+                '}';
+    }
+
 }
