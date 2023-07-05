@@ -65,14 +65,14 @@ public class NegotiationController {
         return new ResponseEntity<>(response, response.getStatus());
     }
 
-    @DeleteMapping("/{propsalId}")
+    @DeleteMapping("/{proposalId}")
     public ResponseEntity<Response> modified(@PathVariable("itemId") Long itemId,
                                              @PathVariable("proposalId") Long proposalId,
                                              @RequestBody @Valid WriterInfo req) {
         ProposalRes proposal = negotiationService.deleted(itemId, proposalId, req);
         log.info("SUCCESS = {}", proposal.toString());
 
-        Response response = Response.of(SuccessCode.SUCCESS_MODIFIED_PROPOSAL);
+        Response response = Response.of(SuccessCode.SUCCESS_DELETED_PROPOSAL);
         return new ResponseEntity<>(response, response.getStatus());
     }
 }

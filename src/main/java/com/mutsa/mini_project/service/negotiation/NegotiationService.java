@@ -67,7 +67,7 @@ public class NegotiationService {
         if (hasPrice(form)) {
             SalesItem item = findItemById(itemId);
 
-            Negotiation negotiation = findNegotiationByIdEqualsAndSalesItemEqualsAndRequiredWriterEquals(proposalId, RequiredWriter.of(form.getWriter(), form.getPassword()), item);
+            Negotiation negotiation = findByIdAndSalesItemAndRequiredWriterEquals(proposalId, RequiredWriter.of(form.getWriter(), form.getPassword()), item);
             negotiation.modifyPrice(form.getSuggestedPrice());
 
             return SuccessCode.SUCCESS_MODIFIED_PROPOSAL;
@@ -77,7 +77,7 @@ public class NegotiationService {
         if (!isStatusConfirm(form) && StringUtils.hasText(form.getStatus())) {
             SalesItem item = findSalesItemByIdEqualsAndRequiredWriterEquals(itemId, form);
 
-            Negotiation negotiation = negotiationRepository.findNegotiationsBySalesItemEqualsAndId(item, proposalId)
+            Negotiation negotiation = negotiationRepository.findBySalesItemEqualsAndId(item, proposalId)
                     .orElseThrow(() -> new NoEntityException(ErrorCode.NOT_FOUND_ENTITY));
 
             ProposalStatus status = ProposalStatus.valueOfName(form.getStatus());
@@ -115,15 +115,15 @@ public class NegotiationService {
     public ProposalRes deleted(Long itemId, Long proposalId, WriterInfo req) {
         SalesItem item = findItemById(itemId);
 
-        Negotiation findProposal = findNegotiationByIdEqualsAndSalesItemEqualsAndRequiredWriterEquals(proposalId, RequiredWriter.of(req.getWriter(), req.getPassword()), item);
+        Negotiation findProposal = findByIdAndSalesItemAndRequiredWriterEquals(proposalId, RequiredWriter.of(req.getWriter(), req.getPassword()), item);
 
         negotiationRepository.delete(findProposal);
 
         return ProposalRes.of(findProposal);
     }
 
-    private Negotiation findNegotiationByIdEqualsAndSalesItemEqualsAndRequiredWriterEquals(Long proposalId, RequiredWriter rw, SalesItem item) {
-        return negotiationRepository.findNegotiationByIdEqualsAndSalesItemEqualsAndRequiredWriterEquals(proposalId, item, rw)
+    private Negotiation findByIdAndSalesItemAndRequiredWriterEquals(Long proposalId, RequiredWriter rw, SalesItem item) {
+        return negotiationRepository.findByIdAndSalesItemAndRequiredWriterEquals(proposalId, item, rw)
                 .orElseThrow(() -> new NotMatchException(ErrorCode.NOT_MATCH_WRITER));
     }
 
